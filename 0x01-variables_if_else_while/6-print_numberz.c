@@ -7,12 +7,12 @@
  */
 int main(void)
 {
-	int alphabet = 0;
+	int alphabets = '0';
 
-	while (alphabet <= 9)
+	while (alphabets <= '9')
 	{
-		putchar(alphabet);
-		alphabet++;
+		putchar(alphabets);
+		alphabets++;
 	}
 	putchar('\n');
 	return (0);
