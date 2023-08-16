@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-void print_number(int num, int isFirst);
+void print_number(int num, int isfirst);
 void print_to_98(int n);
 
 #endif
@@ -22,15 +22,17 @@ void print_number(int num, int isfirst)
 		_putchar(',');
 		_putchar(' ');
 	}
-	if (num < 10)
+	if (num < 0)
 	{
-		_putchar(num + '0');
+		_putchar('-');
+		num = -num;
 	}
-	else
+	if (num >= 10)
 	{
-		_putchar(num / 10 + '0');
-		_putchar(num % 10 + '0');
+		print_number(num / 10, 1);
 	}
+
+	_putchar(num % 10 + '0');
 }
 /**
  * print_to_98 - prints all natural numbers from n to 98,fllwd by a new ln
@@ -41,21 +43,24 @@ void print_number(int num, int isfirst)
 void print_to_98(int n)
 {
 	int isfirst = 1;
+	int i = n;
 
 	if (n <= 98)
 	{
-		for (int i = n; i <= 98; i++)
+		while (i <= 98)
 		{
 			print_number(i, isfirst);
 			isfirst = 0;
+			i++;
 		}
 	}
 	else
 	{
-		for (int i = n; i >= 98; i--)
+		while (i >= 98)
 		{
 			print_number(i, isfirst);
 			isfirst = 0;
+			i--;
 		}
 	}
 	_putchar('\n');
