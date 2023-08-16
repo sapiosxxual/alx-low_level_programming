@@ -1,11 +1,11 @@
 #include "main.h"
 /**
- * _isalpha - return 1 if c is upp or low
- *
+ * _isalpha - detects if character is a or A
+ * @c: collect the character
  * Description: using _putchar to print
  *
- * @c: collect character
- * Return: 1 if c is uplnor low otherwuse 0
+ * Return: 1 if c is low or upper otherwise 0
+ *
  */
 int _isalpha(int c)
 {
@@ -14,7 +14,7 @@ int _isalpha(int c)
 
 	for (lower = 'a'; lower <= 'z'; lower++)
 	{
-		for (upper = 'A'; upper < '2'; upper++)
+		for (upper = 'A'; upper <= 'Z'; upper++)
 		{
 			if (lower == c || upper == c)
 			{
