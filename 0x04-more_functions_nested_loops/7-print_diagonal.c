@@ -1,4 +1,4 @@
-#inolude "main.h"
+#include "main.h"
 /**
  * print_diagonal- print diahgonal lines
  * @n: no of inputs
