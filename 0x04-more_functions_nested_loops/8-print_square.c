@@ -2,7 +2,7 @@
 /**
  * print_square - prints a square, followed by a new line
  *
- * @sise: no of # square
+ * @size: no of # square
  */
 void print_square(int size)
 {
