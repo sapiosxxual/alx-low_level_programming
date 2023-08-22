@@ -2,24 +2,32 @@
 #include <stdlib.h>
 #include <time.h>
 /**
- * main - generates the key "Tada! Congrats"
- * Return: 0
+ * main - program that generates rando valid
+ * passwords for the progran 101-crackme
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-	char key[] = "Tada! Congrats";
-	int key_length = sizeof(key) - 1;
-	int i = 0;
+	int pass[100];
+	int i, sum, n;
+
+	sum = 0;
 
 	srand(time(NULL));
 
-	while (i < key_length)
+	for (i = 0; i < 100; i++)
 	{
-		putchar(key[i]);
-		i++;
-	}
-	putchar('\n');
+		pass[i] = rand() % 78;
+		sum += (pass[i] + '0');
+		putchar(pass[i] + '0');
 
+		if ((2772 - sum) - 0 < 78)
+		{
+			n = 2772 - sum - '0';
+			sum += n;
+			putchar(n + '0');
+			break;
+		}
+	}
 	return (0);
 }
-
