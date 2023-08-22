@@ -33,5 +33,5 @@ int _atoi(char *s)
 		s++;
 	}
 
-	return (result * sign);
+	return (rslt * sign);
 }
