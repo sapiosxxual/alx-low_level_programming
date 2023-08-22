@@ -2,24 +2,22 @@
 #include <stdlib.h>
 #include <time.h>
 /**
- * main-generates random valid passwordi
- * Return: (0);
+ * main - generates the key "Tada! Congrats"
+ * Return: 0
  */
 int main(void)
 {
-	int sum;
-	char c;
+	char key[] = "Tada! Congrats";
+	int key_length = sizeof(key) - 1;
 
 	srand(time(NULL));
-	sum = 0;
 
-	while (sum <= 2473)
+	for (int i = 0; i < key_length; i++)
 	{
-		c = rand() % 128;
-		sum += c;
-		putchar(c);
+		putchar(key[i]);
 	}
-	putchar(4334 - sum);
+	putchar('\n');
 
 	return (0);
 }
+
