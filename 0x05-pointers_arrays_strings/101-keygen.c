@@ -9,10 +9,9 @@ int main(void)
 {
 	char key[] = "Tada! Congrats";
 	int key_length = sizeof(key) - 1;
+	int i = 0;
 
 	srand(time(NULL));
-
-	int i = 0;
 
 	while (i < key_length)
 	{
