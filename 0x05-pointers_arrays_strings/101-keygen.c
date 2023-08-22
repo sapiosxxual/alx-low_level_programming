@@ -12,9 +12,12 @@ int main(void)
 
 	srand(time(NULL));
 
-	for (int i = 0; i < key_length; i++)
+	int i = 0;
+
+	while (i < key_length)
 	{
 		putchar(key[i]);
+		i++;
 	}
 	putchar('\n');
 
