@@ -7,22 +7,19 @@
  */
 int main(void)
 {
+	int sum;
+	char c;
+
 	srand(time(NULL));
+	sum = 0;
 
-	int i;
-	char valid_chars[] = "abcdefghijklmopqrstuvwxyzABCEFINOPQRSVWXYZ0123456789";
-	int password_length = 11;
-	char password[12];
-
-	for (int i = 0; i < password_length; i++)
+	while (sum <= 2473)
 	{
-		int random_index = rand() % (sizeof(valid_chars) - 1);
-
-		password[i] = valid_chars[random_index];
+		c = rand() % 128;
+		sum += c;
+		putchar(c);
 	}
-
-	password[password_length] = '\0';
-	printf("Generated Password: %s\n", password);
+	putchar(4334 - sum);
 
 	return (0);
 }
