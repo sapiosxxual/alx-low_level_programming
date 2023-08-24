@@ -2,7 +2,10 @@
 #include <string.h>
 /**
  * infinite_add-add two numbers
- *
+ * @n1: first number
+ * @n2: second number
+ * @r: result
+ * @size_r: result size
  * Return: r + result_index
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
@@ -20,7 +23,9 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		int digit_n2 = (index_n2 >= 0) ? n2[index_n2] - '0' : 0;
 
 		int sum = digit_n1 + digit_n2 + carry;
+
 		carry = sum / 10;
+
 		int digit_result = sum % 10;
 
 		if (result_index > 0)
