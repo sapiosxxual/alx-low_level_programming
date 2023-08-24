@@ -8,6 +8,7 @@
 char *leet(char *str)
 {
 	char leet_map[256] = {0};
+
 	leet_map['a'] = leet_map['A'] = '4';
 	leet_map['e'] = leet_map['E'] = '3';
 	leet_map['o'] = leet_map['O'] = '0';
@@ -22,5 +23,5 @@ char *leet(char *str)
 		}
 	}
 
-	return str;
+	return (str);
 }
