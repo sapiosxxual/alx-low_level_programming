@@ -1,8 +1,5 @@
 #include <stdio.h>
-/**
- * main-initializin n
- * Return: a[2] = 98
- */
+
 int main(void)
 {
 	int n;
