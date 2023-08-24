@@ -16,7 +16,6 @@ char *leet(char *str)
 			if (str[i] == leet_chars[j])
 			{
 				str[i] = leet_subs[j];
-				break;
 			}
 		}
 	}
