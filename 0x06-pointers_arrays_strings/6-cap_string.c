@@ -2,7 +2,6 @@
 /**
  * cap_string- capitalizes first char of each word in string
  * @str: string
- * Descriptio: using string_toupper to change lower to upper
  * Return: str after function
  */
 char *cap_string(char *str)
