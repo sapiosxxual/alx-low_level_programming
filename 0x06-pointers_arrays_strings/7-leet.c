@@ -6,8 +6,8 @@
  */
 char *leet(char *str)
 {
-	char *leet_chars = "aeotlAEOTL";
-	char *leet_subs = "43071031";
+	char leet_chars[] = "aeotlAEOTL";
+	char leet_subs[] = "4307143071";
 
 	for (int i = 0; str[i] != '\0'; i++)
 	{
