@@ -7,14 +7,12 @@
 char *string_toupper(char *str)
 {
 	int i = 0;
+
 	while (str[i] != '\0')
 	{
-		char lower = 'a';
-		char upper = 'A';
-
 		if (str[i] >= 'a' && str[i] <= 'z')
 		{
-			str[i] = str[i] - upper + lower;
+			str[i] = str[i] - 32;
 		}
 		i++;
 	}
