@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * main-initializing n
+ * main-initializin n
  * Return: a[2] = 98
  */
 int main(void)
