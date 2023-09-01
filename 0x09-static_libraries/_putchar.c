@@ -1,6 +1,6 @@
 #include "unistd.h"
 /**
- * _putcuar-print charcater(s) as output
+ * _putchar-print charcater(s) as output
  * Return: On Success 1.
  * On error, -1 is returned and error is set approrpraitely
  */
