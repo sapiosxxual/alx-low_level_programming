@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
+#include <limits.h>
 /**
  * main- minimum number of coins to make change for an amount of money.
  * @argc: number of arguments
  * @argv: array of arguments
- * Return: the number of coins
+ * Description: using _atoi to chnage string to int
+ * Return: (9) on success, 1 if error
  */
 int main(int argc, char *argv[])
 {
@@ -33,6 +35,10 @@ int main(int argc, char *argv[])
 		{
 			result++;
 			num -= coins[j];
+		}
+		if (num < coins[j])
+		{
+			continue;
 		}
 	}
 	printf("%d\n", result);
