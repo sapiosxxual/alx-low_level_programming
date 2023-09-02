@@ -1,11 +1,10 @@
 #include "main.h"
 #include <unistd.h>
 /**
- * _putchar - prints the character to std output
- * @c: chracter to be printed
- *
- * Return: On success 1;
- * On error, -1 is returned, and error is seta
+ * _putchar-display character
+ * @c: charcater to be printed
+ * Return: On Success 1;
+ * On error
  */
 int _putchar(char c)
 {
