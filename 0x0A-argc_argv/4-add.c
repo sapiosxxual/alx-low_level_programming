@@ -1,6 +1,28 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+/**
+ * _isdigit-check if str contains digit
+ * @str- the string
+ * Return: (0);
+ */
+int _isdigit(char *str)
+{
+	unsigned int i = 0;
+
+	while (i < strlen(str))
+	{
+		if (!isdigit(str[i]))
+		{
+			return (0);
+		}
+		i++;
+	}
+
+	return (1);
+}
 /**
  * _atoi-convert string to integer
  * @str: the string
@@ -45,29 +67,16 @@ int main(int argc, char *argv[])
 {
 	int sum = 0;
 	int i = 1;
-	int hasError = 0;
 	int num;
 
-	if (argc == 1)
-	{
-		printf("Error\n");
-		return (1);
-	}
 	while (i < argc)
 	{
-		num = _atoi(argv[i]);
-
-		if (num > 0)
+		if (_isdigit(argv[i]))
 		{
+			num = _atoi(argv[i]);
 			sum += num;
 		}
 		else
-		{
-			hasError = 1;
-			break;
-		}
-
-		if (hasError)
 		{
 			printf("Error\n");
 			return (1);
