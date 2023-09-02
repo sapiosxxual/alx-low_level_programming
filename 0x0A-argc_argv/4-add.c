@@ -5,7 +5,7 @@
 #include <string.h>
 /**
  * _isdigit-check if str contains digit
- * @str- the string
+ * @str: the string
  * Return: (0);
  */
 int _isdigit(char *str)
