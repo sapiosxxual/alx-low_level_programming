@@ -13,6 +13,7 @@ char *str_concat(char *s1, char *s2)
 	size_t len2 = strlen(s2);
 	size_t total_len = len1 + len2;
 	char *result;
+	size_t j, i;
 
 	if (s1 == NULL)
 	{
@@ -23,15 +24,21 @@ char *str_concat(char *s1, char *s2)
 		s2 = "";
 	}
 
-	result = (char *)malloc((total_len + 1) * sizeof(char));
+	result = malloc((total_len + 1) * sizeof(char));
 
 	if (result == NULL)
 	{
+		free(result);
 		return (NULL);
 	}
-
-	strcpy(result, s1);
-	strcat(result, s2);
+	for (i = 0; i < len1; i++)
+	{
+		result[i] = s1[i];
+	}
+	for (j = 0; j < len2; j++)
+	{
+		result[i] = s2[j];
+	}
 
 	return (result);
 }
