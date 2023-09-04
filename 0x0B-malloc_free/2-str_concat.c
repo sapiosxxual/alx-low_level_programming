@@ -12,6 +12,7 @@ char *str_concat(char *s1, char *s2)
 	size_t len1 = strlen(s1);
 	size_t len2 = strlen(s2);
 	size_t total_len = len1 + len2;
+	char *result;
 
 	if (s1 == NULL)
 	{
@@ -22,7 +23,7 @@ char *str_concat(char *s1, char *s2)
 		s2 = "";
 	}
 
-	char *result = (char *)malloc((total_len + 1) * sizeof(char));
+	result = (char *)malloc((total_len + 1) * sizeof(char));
 
 	if (result == NULL)
 	{
