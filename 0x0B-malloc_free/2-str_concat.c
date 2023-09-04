@@ -16,11 +16,11 @@ char *str_concat(char *s1, char *s2)
 
 	if (s1 == NULL)
 	{
-		result = s2;
+		s1 = "";
 	}
 	if (s2 == NULL)
 	{
-		result = s1;
+		s2 = "";
 	}
 
 	result = (char *)malloc((total_len + 1) * sizeof(char));
