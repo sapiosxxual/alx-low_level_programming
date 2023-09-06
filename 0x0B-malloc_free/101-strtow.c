@@ -1,54 +1,82 @@
 #include "main.h"
 #include <stdlib.h>
 #include <string.h>
+
 /**
- * strtow-function that splits a string into words.
- * @str: the string
- * Return: the words
+ * countWords - Counts the number of words in a string.
+ * @str: The input string.
+ * Return: The number of words.
+ */
+int countWords(char *str)
+{
+	int count = 0;
+	int is_word = 0;
+
+	while (*str)
+	{
+		if (*str == ' ')
+		{
+			is_word = 0;
+		}
+		else if (is_word == 0)
+		{
+			count++;
+			is_word = 1;
+		}
+		str++;
+	}
+	return (count);
+}
+/**
+ * strtow - Splits a string into words.
+ * @str: The input string.
+ * Return: An array of words.
  */
 char **strtow(char *str)
 {
-	int i, j, k, word_count = 0;
-	char **words;
+	int word_count;
+	int i, word_length;
+	char **words, *word_start;
 
 	if (str == NULL || *str == '\0')
 		return (NULL);
 
-	for (i = 0; str[i]; i++)
-	{
-		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
-			word_count++;
-	}
+	word_count = countWords(str);
 
 	if (word_count == 0)
 		return (NULL);
-
 	words = malloc((word_count + 1) * sizeof(char *));
 		if (words == NULL)
-		{
 			return (NULL);
-		}
-	for (i = 0, k = 0; str[i] && k < word_count; k++)
+
+	i = 0;
+
+	while (*str && i < word_count)
 	{
-		while (str[i] && str[i] == ' ')
-			i++;
-		for (j = i; str[j] && str[j] != ' '; j++);
+		while (*str == ' ')
+			str++;
 
-		words[k] = malloc(sizeof(char) * (j - i + 1));
-		if (words[k] == NULL)
-		{
-			while (k > 0)
-			{
-				free(words[--k]);
-			}
-			free(words);
-			return (NULL);
-		}
-		strncpy(words[k], str + i, j - i);
-		words[k][j - i] = '\0';
-			i = j;
+	word_start = str;
+
+	while (*str && *str != ' ')
+		str++;
+
+	word_length = str - word_start;
+
+	words[i] = malloc(word_length + 1);
+
+	if (words[i] == NULL)
+	{
+		while (i > 0)
+			free(words[--i]);
+		free(words);
+		return (NULL);
 	}
-
+	strncpy(words[i], word_start, word_length);
+	words[i][word_length] = '\0';
+	i++;
+	}
 	words[word_count] = NULL;
 	return (words);
 }
+
