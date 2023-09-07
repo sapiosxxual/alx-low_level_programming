@@ -2,7 +2,6 @@
 #include <stdlib.h>
 /**
  * string_nconcat-function that concatenates two strings using first n bytes
- * of the second string, if n = second string the full 2nd str will be used
  * @s1: first string
  * @s2: second string
  * @n: n bytes of s2
@@ -11,22 +10,18 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	size_t len1 = 0, len2 = 0, total_len = 0, i = 0, j = 0;
-	char *newString;
+	char *newString = newString = malloc(sizeof(char) * total_len);
 
 	while (s1[len1] != '\0')
 		len1++;
 	if (s2 == NULL)
-	{
 		s2 = "";
-		len2 = 0;
-	}
 	while (s2[len2] != '\0')
 		len2++;
 	if (len2 > n)
 		total_len = len1 + n + 1;
 	if (len2 <= n)
 		total_len = len1 + len2 + 1;
-	newString = malloc(sizeof(char) * total_len);
 	if (newString == NULL)
 		return (NULL);
 	for (i = 0, j = 0; i < total_len - 1; i++)
