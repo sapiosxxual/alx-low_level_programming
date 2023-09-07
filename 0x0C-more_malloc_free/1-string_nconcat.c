@@ -10,15 +10,12 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	size_t len1 = 0, len2 = 0, total_len = 0, i = 0, j = 0;
-	char *newString = newString = malloc(sizeof(char) * total_len);
+	char *newString = malloc(sizeof(char) * total_len);
 
 	while (s1[len1] != '\0')
 		len1++;
 	if (s2 == NULL)
-	{
 		s2 = "";
-		len2 = 0;
-	}
 	while (s2[len2] != '\0')
 		len2++;
 	if (len2 > n)
