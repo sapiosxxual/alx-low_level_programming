@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "main.h"
 /**
- * is_positive_number - Checks if a string is a positive number.
+ * is_digits- Checks if a string contains a non digit char
  * @str: The string to check.
  *
- * Return: 1 if it's a positive number, 0 otherwise.
+ * Return: 0 if it's non-digit, 1 0therwise.
  */
-int is_positive_number(char *str)
+int is_digits(char *str)
 {
 	while (*str)
 	{
@@ -19,47 +20,72 @@ int is_positive_number(char *str)
 	return (1);
 }
 /**
- * multiply - Multiplies two positive numbers.
- * @num1: The first positive number.
- * @num2: The second positive number.
- *
- * Return: The result of the multiplication.
+ * _strlen - returns the length of a string
+ * @str: the string
+ * Return: length of the string
  */
-unsigned long multiply(unsigned long num1, unsigned long num2)
+int _strlen(char *str)
 {
-	return (num1 * num2);
+	int l = 0;
+
+	while (str[l] != '\0')
+		l++;
+	return (l);
 }
 /**
- * main- use argc and argv[] to run command line
+ * errors- handle errors for main
+ */
+void errors(void)
+{
+	printf("Error\n");
+		exit(98);
+}
+/**
+ * main- multiplies two positive numbers
  * @argc: number of arguments
- * @argv: the arguments
- * Return: (0);
+ * @argv: the arguments in array
+ * Return: Always (0);
  */
 int main(int argc, char *argv[])
 {
-	char *num1_str;
-	char *num2_str;
-	unsigned long result;
-	unsigned long num1;
-	unsigned long num2;
+	char *s1, *s2;
+	int len1, len2, len, i, c, dg1, dg2, *result, a = 0;
 
-	if (argc != 3)
+	s1 = argv[1], s2 = argv[2];
+	if (argc != 3 || !is_digits(s1) || !is_digits(s2))
+		errors();
+	len1 = _strlen(s1);
+	len2 = _strlen(s2);
+	len = len1 + len2 + 1;
+	result = malloc(sizeof(int) * len);
+	if (!result)
+		return (1);
+	for (i = 0; i <= len1 + len2; i++)
+		result[i] = 0;
+	for (len1 = len1 - 1; len1 >= 0; len1--)
 	{
-		printf("Error\n");
-		return (98);
+		dg1 = s1[len1] - '0';
+		c = 0;
+		for (len2 = _strlen(s2) - 1; len2 >= 0; len2--)
+		{
+			dg2 = s2[len2] - '0';
+			c += result[len1 + len2 + 1] + (dg1 * dg2);
+			result[len1 + len2 + 1] = c % 10;
+			c /= 10;
+		}
+		if (c > 0)
+			result[len1 + len2 + 1] += c;
 	}
-	num1_str = argv[1];
-	num2_str = argv[2];
-	if (!is_positive_number(num1_str) || !is_positive_number(num2_str))
+	for (i = 0; i < len - 1; i++)
 	{
-		printf("Error\n");
-		return (98);
+		if (result[i])
+			a = 1;
+		if (a)
+			_putchar(result[i] + '0');
 	}
-	num1 = strtoul(num1_str, NULL, 10);
-	num2 = strtoul(num2_str, NULL, 10);
-	result = multiply(num1, num2);
-
-	printf("%lu\n", result);
-
+	if (!a)
+		_putchar('0');
+	_putchar('\n');
+	free(result);
 	return (0);
 }
