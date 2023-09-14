@@ -4,7 +4,7 @@
  * main - main function opcode to be printed
  * @argc: number of arguments which is 1 otherwise error
  * @argv: the argument
- * Return: (0);
+ * Return: Always 0 (Success)
  */
 int main(int argc, char *argv[])
 {
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 			printf("%02hhx\n", arr[i]);
 			break;
 		}
-		printf("%02hhx", arr[i]);
+		printf("%02hhx ", arr[i]);
 	}
 	return (0);
 }
