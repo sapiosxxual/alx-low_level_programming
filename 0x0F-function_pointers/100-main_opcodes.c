@@ -1,21 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * print_opcodes - print opcodes
- * @number_of_bytes: number of bytes to be printed
- */
-void print_opcodes(int number_of_bytes)
-{
-	int i;
-	unsigned char *main_ptr = (unsigned char *)&print_opcodes;
-
-	for (i = 0; i < number_of_bytes; i++)
-	{
-		printf("%02x ", main_ptr[i]);
-	}
-	printf("\n");
-}
-/**
  * main - main function opcode to be printed
  * @argc: number of arguments which is 1 otherwise error
  * @argv: the argument
@@ -24,6 +9,8 @@ void print_opcodes(int number_of_bytes)
 int main(int argc, char *argv[])
 {
 	int number_of_bytes;
+	char *arr;
+	int i;
 
 	if (argc != 2)
 	{
@@ -38,7 +25,16 @@ int main(int argc, char *argv[])
 		exit(2);
 	}
 
-	print_opcodes(number_of_bytes);
+	arr = (char *)main;
 
+	for (i = 0; i < number_of_bytes; i++)
+	{
+		if (i == number_of_bytes -1)
+		{
+			printf("%02hhx\n", arr[i]);
+			break;
+		}
+		printf("%02hhx", arr[i]);
+	}
 	return (0);
 }
