@@ -3,7 +3,7 @@
 #include <stdarg.h>
 /**
  * print_all - print anything
- * @format: all inout firmat
+ * @format: all input format
  */
 void print_all(const char * const format, ...)
 {
@@ -12,7 +12,6 @@ void print_all(const char * const format, ...)
 	int i = 0;
 
 	va_start(args, format);
-	str = va_arg(args, char *);
 	if (format)
 	{
 		while (format[i])
@@ -26,20 +25,18 @@ void print_all(const char * const format, ...)
 					printf("%s%d", separator, va_arg(args, int));
 					break;
 				case 'f':
-						printf("%s%f", separator, (float)va_arg(args, double));
-						break;
+					printf("%s%f", separator, (float)va_arg(args, double));
+					break;
 				case 's':
-						if (!str)
-						{
-							str = "(nil)";
-						}
-						else
-						{
-							printf("%s%s", separator, str);
-						}
+					str = va_arg(args, char *);
+					if (str != NULL)
+						printf("%s%s", separator, str);
+					else
+						printf("%s(nil)", separator);
+					break;
 				default:
-						i++;
-						continue;
+					i++;
+					continue;
 			}
 			separator = ", ";
 			i++;
