@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * print_listint_safe - function that prints a listint_t linked list
+ * print_listint_safe - function that print a listint_t linked list
  * @head: pointer to head of the linked list
  * Return: number of nodes in the list
  */
