@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * flips_bits - coutung the no of bits to change
+ * flip_bits - coutung the no of bits to change
  * to move from one nö to another
  * @n: first no
  * @m: second no
