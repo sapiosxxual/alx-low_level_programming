@@ -4,7 +4,6 @@
  * @n: the unsigned long int where bit is extracted
  * @index: the index of the bit to retrieve starting from 0
  * Return: value of bit at the specified index 0 or 1)
- * -1 if error occurs
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
@@ -12,5 +11,5 @@ int get_bit(unsigned long int n, unsigned int index)
 
 	if (index >= sizeof(unsigned long int) * 8)
 		return (-1);
-	return (n & mask) ? 1 : 0;
+	return ((n & mask) ? 1 : 0);
 }
