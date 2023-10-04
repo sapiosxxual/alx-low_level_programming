@@ -66,7 +66,8 @@ int main(int argc, char *argv[])
 		close_file(file_from);
 		exit(99);
 	}
-	while ((r = read(file_from, buffer, 1024)) > 0)
+	r = read(file_from, buffer, 1024);
+	while (r > 0)
 	{
 		if (r == -1)
 		{
