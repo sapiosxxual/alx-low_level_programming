@@ -2,9 +2,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 void check_elf(unsigned char *e_ident);
-void print_magic(unsigned char *e_ident);
-void print_class(unsigned char *e_ident);
-void print_data(unsigned char *e_ident);
+void print_magic_class_data(unsigned char *e_ident);
 void print_version(unsigned char *e_ident);
 void print_abi(unsigned char *e_ident);
 void print_osabi(unsigned char *e_ident);
@@ -68,6 +66,7 @@ void print_magic_class_data(unsigned char *e_ident)
 			break;
 		default:
 			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+	}
 	printf("  Data:                              ");
 	switch (e_ident[EI_DATA])
 	{
@@ -258,9 +257,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	}
 	check_elf(header->e_ident);
 	printf("ELF Header:\n");
-	print_magic(header->e_ident);
-	print_class(header->e_ident);
-	print_data(header->e_ident);
+	print_magic_class_data(header->e_ident);
 	print_version(header->e_ident);
 	print_osabi(header->e_ident);
 	print_abi(header->e_ident);
