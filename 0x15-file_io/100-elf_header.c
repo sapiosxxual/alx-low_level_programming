@@ -34,12 +34,14 @@ void check_elf(unsigned char *e_ident)
 	}
 }
 /**
- * print_magic - Prints the magic numbers of an ELF header.
+ * print_magic_class_data - Print the magic numbers & class
+ * & print data of an ELF header.
  * @e_ident: A pointer to an array containing the ELF magic numbers.
  *
  * Description: Magic numbers are separated by spaces.
  */
-void print_magic(unsigned char *e_ident)
+void print_magic_class_data(unsigned char *e_ident);
+void print_magic_class_data(unsigned char *e_ident)
 {
 	int index;
 
@@ -52,13 +54,6 @@ void print_magic(unsigned char *e_ident)
 		else
 			printf(" ");
 	}
-}
-/**
- * print_class - Prints the class of an ELF header.
- * @e_ident: A pointer to an array containing the ELF class.
- */
-void print_class(unsigned char *e_ident)
-{
 	printf("  Class:                             ");
 	switch (e_ident[EI_CLASS])
 	{
@@ -73,14 +68,6 @@ void print_class(unsigned char *e_ident)
 			break;
 		default:
 			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
-	}
-}
-/**
- * print_data - Prints the data of an ELF header.
- * @e_ident: A pointer to an array containing the ELF class.
- */
-void print_data(unsigned char *e_ident)
-{
 	printf("  Data:                              ");
 	switch (e_ident[EI_DATA])
 	{
