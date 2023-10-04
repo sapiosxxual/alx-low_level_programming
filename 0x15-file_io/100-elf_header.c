@@ -4,6 +4,7 @@
  * print_elf_header - Prints information from the ELF header.
  * @header: Pointer to the ELF header structure.
  */
+void print_elf_header(const Elf64_Ehdr *header);
 void print_elf_header(const Elf64_Ehdr *header)
 {
 	int i = 0;
