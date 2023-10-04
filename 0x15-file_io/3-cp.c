@@ -46,26 +46,23 @@ void close_file(int file_d)
 int main(int argc, char *argv[])
 {
 	int file_from, file_to, r, w;
-	char *buffer;
+	char *buffer[1024];
 
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	buffer = create_buff(argv[2]);
 	file_from = open(argv[1], O_RDONLY);
 	if (file_from == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		free(buffer);
 		exit(98);
 	}
 	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (file_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		free(buffer);
 		close_file(file_from);
 		exit(98);
 	}
@@ -75,7 +72,6 @@ int main(int argc, char *argv[])
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
 					argv[1]);
-			free(buffer);
 			close_file(file_from);
 			close_file(file_to);
 			exit(98);
@@ -84,13 +80,11 @@ int main(int argc, char *argv[])
 		if (w == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			free(buffer);
 			close_file(file_from);
 			close_file(file_to);
 			exit(99);
 		}
 	}
-	free(buffer);
 	if (r == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[1]);
