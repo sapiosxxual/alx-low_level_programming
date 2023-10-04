@@ -46,7 +46,8 @@ void close_file(int file_d)
 int main(int argc, char *argv[])
 {
 	int file_from, file_to, r, w;
-	char *buffer[1024];
+	char buffer[1024];
+	ssize_t total_written = 0;
 
 	if (argc != 3)
 	{
@@ -76,13 +77,17 @@ int main(int argc, char *argv[])
 			close_file(file_to);
 			exit(98);
 		}
-		w = write(file_to, buffer, r);
-		if (w == -1 || w != r)
+		while (total_written < r)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			close_file(file_from);
-			close_file(file_to);
-			exit(99);
+			w = write(file_to, buffer + total_written, r - total_written);
+			if (w == -1 || w != r)
+			{
+				dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+				close_file(file_from);
+				close_file(file_to);
+				exit(99);
+			}
+			total_written += w;
 		}
 	}
 	close_file(file_from);
