@@ -85,7 +85,6 @@ int main(int argc, char *argv[])
 			close_file(file_to);
 			exit(99);
 		}
-		r = read(file_from, buffer, 1024);
 	}
 	close_file(file_from);
 	close_file(file_to);
