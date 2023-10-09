@@ -10,12 +10,12 @@ void handle_file_error(int from_file, int dest_file, char *argv[])
 {
 	if (from_file == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %d\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 	if (dest_file == -1)
 	{
-		dprintf(STDERR_FILE O, "Error: Can't write to %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
 }
@@ -27,7 +27,7 @@ void handle_file_error(int from_file, int dest_file, char *argv[])
  */
 int main(int argc, char *argv[])
 {
-	int from_file, int dest_file, err_close;
+	int from_file, dest_file, err_close;
 	ssize_t nchars, nwr;
 	char buf[1024];
 
@@ -38,17 +38,17 @@ int main(int argc, char *argv[])
 	}
 	from_file = open(argv[1], O_RDONLY);
 	dest_file = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
-	handle_error_file(from_file, dest_file, argv);
+	handle_file_error(from_file, dest_file, argv);
 
 	nchars = 1024;
-	while (nchars = 1024)
+	while (nchars == 1024)
 	{
 		nchars = read(from_file, buf, 1024);
 		if (nchars == -1)
-			handle_error_file(-1, 0, argv);
-		nwr = write(dest_file, buf, 1024);
+			handle_file_error(-1, 0, argv);
+		nwr = write(dest_file, buf, nchars);
 		if (nwr == -1)
-			handle_error_file(-1, 0, argv)
+			handle_file_error(0, -1, argv);
 	}
 	err_close = close(from_file);
 	if (err_close == -1)
